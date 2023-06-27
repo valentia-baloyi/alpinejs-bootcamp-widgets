@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+    <script src="greet.js"defer></script>
+    <script src="TransportFee.js"defer></script>
+    <script src="WordGame.js"defer></script>
+    <script src="totalphonebill.js"defer></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Greet Bootcamp Widgets</h1>
+        
+        <div x-data="{ name: 'Valentia', greeting: '' }">
+          <div class="form-group">
+            <label for="nameInput">Enter your name:</label>
+            <input type="text" class="form-control" id="nameInput" x-model="name">
+          </div>
+          
+          <button class="btn btn-primary" x-on:click="greeting = greet(name)">Greet</button>
+          
+          <p x-show="greeting" class="mt-3">
+            <strong>Output:</strong> <span x-text="greeting"></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="container">
+        <h1>Transport Fee Calculator</h1>
+        <div id="app" x-data="{ shift: '' }">
+            <div class="form-group">
+                <label for="shiftSelect">Select Shift:</label>
+                <select id="shiftSelect" class="form-control" x-model="shift">
+                    <option value="">-- Select Shift --</option>
+                    <option value="morning">Morning</option>
+                    <option value="afternoon">Afternoon</option>
+                    <option value="nightshift">Nightshift</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="result">Transport Fee:</label>
+                <p id="result" class="form-control" x-text="calculateTransportFee(shift)"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <h1>Activity Costs</h1>
+        <div x-data="activityCosts">
+          <div class="mb-3">
+            <label for="callCostInput" class="form-label">Call Cost:</label>
+            <input type="number" class="form-control" id="callCostInput" x-model="callCost">
+          </div>
+          <div class="mb-3">
+            <label for="dataCostInput" class="form-label">Data Cost:</label>
+            <input type="number" class="form-control" id="dataCostInput" x-model="dataCost">
+          </div>
+          <div class="mb-3">
+            <label for="smsCostInput" class="form-label">SMS Cost:</label>
+            <input type="number" class="form-control" id="smsCostInput" x-model="smsCost">
+          </div>
+        </div>
+      </div>
+
+      <div class="container mt-5">
+        <h1>Word Game</h1>
+        <div class="row">
+          <div class="col-lg-6">
+            <div x-data="{ sentence: '', longest: '', shortest: '', length: 0 }">
+              <div class="mb-3">
+                <label for="sentenceInput" class="form-label">Enter a sentence:</label>
+                <input type="text" class="form-control" id="sentenceInput" x-model="sentence">
+              </div>
+              <button class="btn btn-primary" x-on:click="calculate()">Calculate</button>
+              <div class="mt-3">
+                <p>Longest Word: <span x-text="longest"></span></p>
+                <p>Shortest Word: <span x-text="shortest"></span></p>
+                <p>Word Lengths: <span x-text="length"></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+</body>
+</html>
+
